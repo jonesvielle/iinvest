@@ -274,6 +274,7 @@ const Transfer = (props: TransferProps) => {
               source={require('../shared/images/loupe.png')}
             />
             <TextInput
+              style={{color: themeColor.secondaryTextLight}}
               onChangeText={handleSearchContacts}
               placeholder="Search name or number."
               placeholderTextColor={themeColor.secondaryTextLight}
