@@ -1,16 +1,24 @@
 import * as React from 'react';
-import {Image, Text, View} from 'react-native';
+import {
+  GestureResponderEvent,
+  Image,
+  Pressable,
+  Text,
+  View,
+} from 'react-native';
 import {responsiveScale, width} from '../../utilities/helper';
 import {themeColor} from '../theme';
 
 interface ActivityCardComponentProps {
   children: React.ReactNode;
   title: string;
+  onPress: ((event: GestureResponderEvent) => void) | null | undefined;
 }
 
 const ActivityCardComponent = ({
   children,
   title,
+  onPress,
 }: ActivityCardComponentProps) => {
   return (
     <View
@@ -29,17 +37,25 @@ const ActivityCardComponent = ({
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <View
-          style={{
-            backgroundColor: themeColor.purple,
-            padding: responsiveScale(5),
-            borderRadius: responsiveScale(5),
-            alignItems: 'center',
-          }}>
-          {children}
-        </View>
+        <Pressable onPress={onPress}>
+          <View
+            style={{
+              backgroundColor: themeColor.purple,
+              padding: responsiveScale(5),
+              borderRadius: responsiveScale(5),
+              alignItems: 'center',
+            }}>
+            {children}
+          </View>
+        </Pressable>
       </View>
-      <Text style={{marginTop: responsiveScale(5)}}>{title}</Text>
+      <Text
+        style={{
+          marginTop: responsiveScale(5),
+          color: themeColor.secondaryText,
+        }}>
+        {title}
+      </Text>
     </View>
   );
 };

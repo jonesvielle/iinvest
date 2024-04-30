@@ -260,7 +260,8 @@ const Transfer = (props: TransferProps) => {
               flexDirection: 'row',
               alignItems: 'center',
               paddingHorizontal: responsiveScale(5),
-              paddingVertical: responsiveScale(2),
+              paddingVertical:
+                Platform.OS === 'ios' ? responsiveScale(5) : responsiveScale(0),
               borderRadius: responsiveScale(5),
             }}>
             <Image
@@ -275,6 +276,7 @@ const Transfer = (props: TransferProps) => {
             <TextInput
               onChangeText={handleSearchContacts}
               placeholder="Search name or number."
+              placeholderTextColor={themeColor.secondaryTextLight}
             />
           </View>
 
@@ -293,7 +295,7 @@ const Transfer = (props: TransferProps) => {
                     paddingHorizontal: responsiveScale(0),
                     backgroundColor: 'white',
                     flexDirection: 'row',
-                    marginTop: responsiveScale(3),
+                    marginTop: responsiveScale(8),
                     alignItems: 'center',
                     borderRadius: responsiveScale(5),
                   }}>
@@ -352,7 +354,7 @@ const Transfer = (props: TransferProps) => {
                 <View
                   style={{
                     borderWidth: responsiveScale(0.2),
-                    marginVertical: responsiveScale(3),
+                    marginTop: responsiveScale(8),
                     borderColor: themeColor.darkGrey,
                     width: '100%',
                   }}

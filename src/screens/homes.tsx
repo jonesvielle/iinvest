@@ -116,6 +116,7 @@ const Home = (props: HomeProps) => {
           style={{
             marginTop: responsiveScale(10),
             fontSize: responsiveFont(13),
+            color: themeColor.secondaryText,
           }}>
           You spent $2,732 on dining out this month. This is 25% more than last
           month.
@@ -159,8 +160,18 @@ const Home = (props: HomeProps) => {
             justifyContent: 'space-between',
           }}>
           {homeActivity.map((activity, index) => (
-            <ActivityCardComponent key={index} title={activity.name}>
-              <Pressable
+            <ActivityCardComponent
+              onPress={() => {
+                if (activity.name === 'Insight') {
+                  navigation.navigate('ScoreScreen');
+                }
+                if (activity.name === 'Transfer') {
+                  navigation.navigate('transfer');
+                }
+              }}
+              key={index}
+              title={activity.name}>
+              {/* <Pressable
                 onPress={() => {
                   if (activity.name === 'Insight') {
                     navigation.navigate('ScoreScreen');
@@ -168,16 +179,16 @@ const Home = (props: HomeProps) => {
                   if (activity.name === 'Transfer') {
                     navigation.navigate('transfer');
                   }
-                }}>
-                <Image
-                  resizeMode="contain"
-                  style={{
-                    width: responsiveScale(6),
-                    height: responsiveScale(6),
-                  }}
-                  source={activity.icon}
-                />
-              </Pressable>
+                }}> */}
+              <Image
+                resizeMode="contain"
+                style={{
+                  width: responsiveScale(6),
+                  height: responsiveScale(6),
+                }}
+                source={activity.icon}
+              />
+              {/* </Pressable> */}
             </ActivityCardComponent>
           ))}
         </View>
